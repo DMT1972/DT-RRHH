@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT Servicios para RR.HH.</title>
+
+    <link rel="stylesheet" href="./CSS/Estilos.css">
+
+    <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <!--Agregar Icono-->
+    <link rel="icon" type="image/x-icon" href="./Imagenes/DT Icono.ico">
+
+    <style>
+body{
+    background-image: url("./Imagenes/Fondo\ en\ Movimiento\ 3.gif");
+    background-repeat:repeat-y;
+    background-attachment: fixed;
+    background-size: 100%;
+    font-family:'Special Elite';
+    /*width: 100%;
+    margin: 0px;*/
+}
+.dropbtn {
+  background-color: var(--colorFondo);
+  color: white;
+  padding: 0px 6px 10px 6px; /*ver si es afectado por el border*/
+  border: 0px;
+  font-size: 1em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:var(--colorFondo);
+  padding: 10px 0px 10px 15px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  /*background-color: rgba(255, 255, 255, 0.3);*/
+  /*text-decoration: underline;*/
+  padding: 0px 6px 0px 6px;
+  border-bottom: 4px solid red;
+}
+.Encabezado li{
+  padding-bottom: 4px;
+}
+.Encabezado li:hover{
+  border-bottom: 4px solid red;/*este borde es el que me hace lio*/
+  padding-bottom: 0;
+}
+.footer{
+    display: grid;
+    flex-direction: row;
+    /*border: 1px solid black;*/
+    align-items: center;   
+    width: 70%; 
+    padding-left: 30%;  
+}
+.nota{
+  width: 96%;
+  padding:2%;
+  border: 1px solid black;
+}
+/*-----------------------------------------------------------------------*/
+.open-button{
+  background-color: var(--colorFondo);
+  color: white;
+  border: 0;
+  font-size: medium;
+  margin-bottom: 0px;
+  padding-bottom: 6px;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  /*bottom: 0;*/
+  top: 120px;
+  left: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 9;
+}
+.form-container {
+  max-width: 200px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 170px;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: green;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.7;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+  opacity: 0.7;
+}
+
+.form-popup a{
+  background-color: blue;
+  opacity: 0.7;
+  font-size: small; 
+  padding: 10px; 
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover, .form-popup a:hover{
+  opacity: 1;
+  color: white;
+}
+img{
+    height: 200px;
+    margin-right: 20px;
+}
+div[class^='Det']{
+    height: auto;
+    line-height: 2em;
+}
+</style>
+
+</head>
+
+<body>
+<!--Encabezado-------------------------------------------------------------->  
+<div class="Encabezado">
+<p>
+  <a href="./Index.html">
+    <img src="./Imagenes/DT sin Fondo Blanco Completo.png" alt="LogoDT" style="float:left; height: 100px;">
+  </a>
+  <nav>      
+    <ul>
+        <li>
+          <!--<a href="./Suscripcion.html">Ingresar</a>-->
+          <button class="open-button" onclick="openForm()">Ingresar</button>
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                       
+              <label for="email"></label>
+              <input type="text" placeholder="e-mail" name="email" required>
+          
+              <label for="psw"></label>
+              <input type="password" placeholder="Password" name="psw" required>
+          
+              <button type="submit" class="btn">Login</button>
+              
+              <a href="./Suscripcion.html">Suscribirse</a>
+              
+              <!--<button type="button" class="btn">Suscribir</button>-->
+              
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+          
+        </li>
+        <li><a href="./Nosotros.html">Nosotros</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding-bottom: 2px; color: red;">Servicios</button>
+          <div class="dropdown-content">
+            <a href="./Servicios.html#Gerenciamiento">Gerenciamiento del Area</a>
+            <a href="./Servicios.html#RRLL">Relaciones Laborales</a>
+            <a href="./Servicios.html#Seleccion">Reclutamiento y Seleccion</a>
+            <a href="./Servicios.html#Capacitacion">Capacitacion</a>
+            <a href="./Servicios.html#Desarrollo">Desarrollo</a>
+            <a href="./Servicios.html#Liquidacion">Liquidacion de Sueldos</a>
+            <a href="./Servicios.html#Proveedores">Proveedores Externos</a>
+            <a href="./Servicios.html#AdP">Administracion de Personal</a>
+            <a href="./Servicios.html#C&B">Compensaciones & Beneficios</a>
+            <a href="./Servicios.html#Vigilancia">Seguridad Patrimonial</a>
+            <a href="./Servicios.html#Seg&Higiene">Seguridad e Higiene</a>
+            <a href="./Servicios.html#DerechoLaboral">Derecho Laboral</a>         
+          </div>
+        </div></li>
+        <li><a href="./Links.html">Links</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding: 0px 6px 2px;">Notas de Interes</button>
+          <div class="dropdown-content">
+            <a href="./Nota-Talento.html" style="border: 0px;">Talento y Bajo Desempeño</a>
+            <a href="./Nota-Alcoholismo.html" style="border: 0px;">Ebriedad, Alcoholismo y Contrato de Trabajo</a>
+            <a href="./Nota-Teletrabajo.html" style="border: 0px;">Teletrabajo</a>
+            <a href="./Nota-Moobing.html" style="border: 0px;">Mobbing</a>
+          </div>
+        </div></li>
+        <li><a href="./Contacto.html">Contacto</a></li>
+        <li style="border: 0;">
+          <form>
+            <input type="search" name="" id="" style="width: 100px;">
+            <input type="submit" value="Buscar">
+          </form>
+        </li>
+    </ul>
+  </nav>
+</p>
+</div>
+<!------------------------------------------------------------------------------------------>
+
+<div class="Det-Seleccion" style="margin-top: 140px;">
+    <h2 id="Seleccion"> Reclutamiento y Seleccion de Personal</h2>
+    <p><img src="./Imagenes/Empleos Imagen 2.jpg" alt="Logo Empleos" style="float: left;">
+        Contamos con un equipo de profesionales con experiencia en Búsqueda y Selección, desarrollada en Empresas de Servicios,
+        Industriales, en Consultoras y Empresas de Personal Eventual, que centran su trabajo en la búsqueda y 
+        selección de los perfiles adecuados para su organización, ya sea personal operativo, mandos medios, 
+        administrativos o personal jerárquico.<br>
+        Contamos con una amplia base de datos que nos permite satisfacer sus necesidades y disminuir sus costos 
+        relacionados con la rotación de personal.<br>
+        Nosotros nos ocuparemos de definir los perfiles y luego de buscar a las personas adecuadas para cubrirlos. </p>
+    <a href="./Index.html">
+        <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-RRLL">
+    <h2 id="RRLL"> Relaciones Laborales</h2>
+    <p><img src="./Imagenes/RRLL Imagen 2.jpg" alt="Logo RRLL" style="float: left;">
+        El conflicto es un proceso normal dentro de cualquier grupo humano, por lo tanto, 
+        el conflicto dentro de la Empresa no debe sorprendernos y debe considerarse como algo normal, 
+        que solo necesita administrarse correctamente.<br>
+        Podemos ayudarlos con:
+            <ul style="list-style-type:circle; list-style-position: outside;">
+                <li>Negociación y mediación con Delegados y Comisiones Internas manteniendo reuniones 
+                periódicas con el cuerpo de delegados o la Comisión Interna tanto dentro como fuera de sus 
+                establecimientos o negociando</li>
+                <li>mediando durante un evento en particular</li>
+            </ul>
+    Asesoramiento e implementación de planes de restructuración
+    Tenemos experiencia en el diseño e implementación de planes de restructuración de personal, 
+    ya sean retiros voluntarios, reacomodamientos de estructura por cambios productivos o del mercado.<br> 
+    Podemos asesorarlos sobre como diseñar, comunicar e implementar estos planes con el menor 
+    impacto posible. </p>
+    <a href="./Index.html">
+        <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-AdP">
+    <h2 id="AdP">Administracion de Personal</h2>
+    <p><img src="./Imagenes/AdP.png" alt="Logo AdP" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Gerenciamiento">
+    <h2 id="Gerenciamiento">Gerenciamiento del Area de RR.HH.</h2>
+    <p><img src="./Imagenes/Gerenciamiento 2.jpg" alt="Logo Gerenciamiento" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Capacitacion">
+    <h2 id="Capacitacion">Capacitacion</h2>
+    <p><img src="./Imagenes/Capacitacion Imagen 2.jpg" alt="Logo Capacitacion" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Desarrollo">
+    <h2 id="Desarrollo">Desarrollo de Recursos Humanos</h2>
+    <p><img src="./Imagenes/Desarrollo Imagen 2.jpg" alt="Logo Desarrollo" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Vigilancia">
+    <h2 id="Vigilancia">Seguridad Patrimonial</h2>
+    <p><img src="./Imagenes/seguridad-privada.jpg" alt="Logo Vigilancia" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Seg&Higiene">
+    <h2 id="Seg&Higiene">Seguridad, Higiene y Medio Ambiente</h2>
+    <p><img src="./Imagenes/Seg&Hig.jpg" alt="Logo See e Higiene" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-C&B">
+    <h2 id="C&B">Compensaciones y Beneficios</h2>
+    <p><img src="./Imagenes/C&B.jpg" alt="Logo C&B" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Liquidacion">
+    <h2 id="Liquidacion">Liquidacion de Sueldos</h2>
+    <p><img src="./Imagenes/Liquidacion.png" alt="Logo Liquidacion" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-DerechoLaboral">
+    <h2 id="DerechoLaboral">Derecho Laboral</h2>
+    <p><img src="./Imagenes/DerechoLaboral.png" alt="Logo Liquidacion" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+<hr>
+<div class="Det-Proveedores">
+    <h2 id="Proveedores">Derecho Laboral</h2>
+    <p><img src="./Imagenes/Proveedores.gif" alt="Logo Liquidacion" style="float: left;">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quidem nulla minima porro minus corrupti labore dolor similique officia recusandae, perspiciatis laboriosam quia aut reiciendis eaque. Repellendus possimus veniam nostrum..<br>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim molestias, temporibus nemo nihil aspernatur culpa alias, soluta vel deleniti officia architecto? Ex praesentium sint minus voluptas, ratione ab libero autem.<br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto nisi in rem possimus quos, quae corporis delectus harum reprehenderit culpa quaerat consectetur amet, ut ex voluptatibus aliquam laborum, expedita cupiditate? </p>
+        <a href="./Index.html">
+            <img src="./Imagenes/Volver.png" style="width: 200px;height: auto;">
+    </a>
+</div>
+
+
+<!--Pie de Pagina------------------------------------------------------------------>
+<div class="footer">
+    <div class="pie-1">
+        <img src="./Imagenes/ubicacion.png" alt="ubicacion" style="height:1.5em;">
+    </div>
+    <div class="pie-2">
+        Avelino Diaz 2334 - CABA
+    </div>
+    <div class="pie-3">
+        <img src="./Imagenes/Telefono.png" alt="Telefono" style="height: 1.5em;">
+    </div>
+    <div class="pie-4">
+        11-5658-6067
+    </div>
+    <div class="pie-5">
+        <img src="./Imagenes/mail.jpg" alt="mail" style="height: 1.5em;">
+    </div>
+    <div class="pie-6">
+        info@DT-RRHH.com
+    </div>
+</div>
+<!------------------------------------------------------------------->
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+  
+
+</body>
+</html>

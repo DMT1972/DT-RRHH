@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT Servicios para RR.HH.</title>
+
+    <link rel="stylesheet" href="./CSS/Estilos.css">
+
+    <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <!--Agregar Icono-->
+    <link rel="icon" type="image/x-icon" href="./Imagenes/DT Icono.ico">
+
+<style>
+body{
+    background-image: url("./Imagenes/Fondo\ en\ Movimiento\ 3.gif");
+    background-repeat:repeat-y;
+    background-attachment: fixed;
+    background-size: 100%;
+    font-family:'Special Elite';
+    /*width: 100%;
+    margin: 0px;*/
+}
+.dropbtn {
+  background-color: var(--colorFondo);
+  color: white;
+  padding: 0px 6px 10px 6px; /*ver si es afectado por el border*/
+  border: 0px;
+  font-size: 1em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:var(--colorFondo);
+  padding: 10px 0px 10px 15px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  /*background-color: rgba(255, 255, 255, 0.3);*/
+  /*text-decoration: underline;*/
+  padding: 0px 6px 0px 6px;
+  border-bottom: 4px solid red;
+}
+.Encabezado li{
+  padding-bottom: 4px;
+}
+.Encabezado li:hover{
+  border-bottom: 4px solid red;/*este borde es el que me hace lio*/
+  padding-bottom: 0;
+}
+.footer{
+    display: grid;
+    flex-direction: row;
+    /*border: 1px solid black;*/
+    align-items: center;   
+    width: 70%; 
+    padding-left: 30%;  
+}
+.nota{
+  width: 96%;
+  padding:2%;
+  border: 1px solid black;
+}
+/*-----------------------------------------------------------------------*/
+.open-button{
+  background-color: var(--colorFondo);
+  color: white;
+  border: 0;
+  font-size: medium;
+  margin-bottom: 0px;
+  padding-bottom: 6px;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  /*bottom: 0;*/
+  top: 120px;
+  left: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 9;
+}
+.form-container {
+  max-width: 200px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 170px;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: green;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.7;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+  opacity: 0.7;
+}
+
+.form-popup a{
+  background-color: blue;
+  opacity: 0.7;
+  font-size: small; 
+  padding: 10px; 
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover, .form-popup a:hover{
+  opacity: 1;
+  color: white;
+}
+</style>
+
+</head>
+
+<body>
+<!--Encabezado-------------------------------------------------------------->  
+<div class="Encabezado">
+<p>
+  <a href="./Index.html">
+    <img src="./Imagenes/DT sin Fondo Blanco Completo.png" alt="LogoDT" style="float:left; height: 100px;">
+  </a>
+  <nav>      
+    <ul>
+        <li>
+          <!--<a href="./Suscripcion.html">Ingresar</a>-->
+          <button class="open-button" onclick="openForm()">Ingresar</button>
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                       
+              <label for="email"></label>
+              <input type="text" placeholder="e-mail" name="email" required>
+          
+              <label for="psw"></label>
+              <input type="password" placeholder="Password" name="psw" required>
+          
+              <button type="submit" class="btn">Login</button>
+              
+              <a href="./Suscripcion.html">Suscribirse</a>
+              
+              <!--<button type="button" class="btn">Suscribir</button>-->
+              
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+          
+        </li>
+        <li><a href="./Nosotros.html">Nosotros</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding-bottom: 2px;">Servicios</button>
+          <div class="dropdown-content">
+            <a href="./Servicios.html#Gerenciamiento">Gerenciamiento del Area</a>
+            <a href="./Servicios.html#RRLL">Relaciones Laborales</a>
+            <a href="./Servicios.html#Seleccion">Reclutamiento y Seleccion</a>
+            <a href="./Servicios.html#Capacitacion">Capacitacion</a>
+            <a href="./Servicios.html#Desarrollo">Desarrollo</a>
+            <a href="./Servicios.html#Liquidacion">Liquidacion de Sueldos</a>
+            <a href="./Servicios.html#Proveedores">Proveedores Externos</a>
+            <a href="./Servicios.html#AdP">Administracion de Personal</a>
+            <a href="./Servicios.html#C&B">Compensaciones & Beneficios</a>
+            <a href="./Servicios.html#Vigilancia">Seguridad Patrimonial</a>
+            <a href="./Servicios.html#Seg&Higiene">Seguridad e Higiene</a>
+            <a href="./Servicios.html#DerechoLaboral">Derecho Laboral</a>         
+          </div>
+        </div></li>
+        <li><a href="./Links.html">Links</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding: 0px 6px 2px;">Notas de Interes</button>
+          <div class="dropdown-content">
+            <a href="./Nota-Talento.html" style="border: 0px;">Talento y Bajo Desempeño</a>
+            <a href="./Nota-Alcoholismo.html" style="border: 0px;">Ebriedad, Alcoholismo y Contrato de Trabajo</a>
+            <a href="./Nota-Teletrabajo.html" style="border: 0px;">Teletrabajo</a>
+            <a href="./Nota-Moobing.html" style="border: 0px;">Mobbing</a>
+          </div>
+        </div></li>
+        <li><a href="./Contacto.html">Contacto</a></li>
+        <li style="border: 0;">
+          <form>
+            <input type="search" name="" id="" style="width: 100px;">
+            <input type="submit" value="Buscar">
+          </form>
+        </li>
+    </ul>
+  </nav>
+</p>
+</div>
+<!------------------------------------------------------------------------------------------>
+<div class="Cuerpo-Suscripcion" style="margin-top: 140px;">
+  <fieldset style="height: 100%;">
+    <legend><b>Formulario Suscripcion</b></legend>
+        <fieldset style="border: 1px solid black;height: auto;">
+            <legend>Datos Personales</legend>
+         <form>
+            <label for="Nombre-Suscriptor">Nombre</label>
+            <input type="text" name="" id="Nombre-Suscriptor" min="5" max="20" style="width: 20%;">
+            <label for="Apellido-Suscriptor">&emsp;Apellido</label>
+            <input type="text" name="" id="Apellido-Suscriptor" min="5" max="20" style="width: 15%;">
+            
+            <label for="Tipo-Doc">&emsp;Tipo de Documento:</label>
+            <select id="Tipo-Doc" name="Tipo-Doc">
+                <option value="DNI">DNI</option>
+                <option value="PASAPORTE">Pasaporte</option>
+                <option value="OTRO">Otro</option>
+            </select>
+
+            <label for="NroDoc-Suscriptor">&emsp;Numero</label>
+            <input type="number" name="" id="NroDoc-Suscriptor" min="6" max="8" style="width: 15%;">
+
+            <br><br>
+            
+            <label for="e-mail-Suscriptor">e-mail</label>
+            <input type="email" name="" id="e-mail-Suscriptor" style="width: 25%;">
+            <label for="Telefono-Suscriptor">&emsp;Telefono</label>
+            <input type="number" name="" id="Telefono-Suscriptor" min="5" max="20" style="width: 15%;">
+            <label for="CUIT-Suscriptor">&emsp;CUIT/CUIL</label>
+            <input type="number" name="" id="CUIT-Suscriptor" min="11" max="11" style="width: 15%;">
+
+            <br><br><hr><br>
+
+            <label for="Calle-Suscriptor">Calle</label>
+            <input type="text" name="" id="Calle-Suscriptor" min="5" max="20" style="width: 30%;">
+            <label for="NroCalle-Suscriptor">&emsp;Numero</label>
+            <input type="number" name="" id="NroCalle-Suscriptor" min="1" max="5" style="width: 5%;">
+            <label for="Piso-Suscriptor">&emsp;Piso</label>
+            <input type="text" name="" id="Piso-Suscriptor" min="1" max="2" style="width: 5%;">
+            <label for="Depto-Suscriptor">&emsp;Departamento</label>
+            <input type="text" name="" id="Depto-Suscriptor" min="1" max="2" style="width: 5%;">
+            <label for="CP-Suscriptor">&emsp;Codigo Postal</label>
+            <input type="text" name="" id="CD-Suscriptor" min="4" max="10" style="width: 5%;"><br><br>
+            <label for="OtrosDatosDireccion-Suscriptor">Otros Datos</label>
+            <input type="text" name="" id="OtrosDatosDireccion-Suscriptor" min="0" max="50" style="width: 25%;">
+            <label for="Ciudad-Suscriptor">&emsp;Ciudad</label>
+            <input type="text" name="" id="Ciudad-Suscriptor" min="5" max="20" style="width: 15%;">
+            <label for="Provincia-Suscriptor">&emsp;Provincia</label>
+            <input type="text" name="" id="Provincia-Suscriptor" min="5" max="20" style="width: 15%;">
+
+            <br><br>
+
+            <p style="text-align: center;">Sexo:
+                <input type="radio" id="Masc-Suscriptor" name="Sexo" value="MASCULINO">
+                <label for="MASCULINO">Masculino</label>
+                <input type="radio" id="Fem-Suscriptor" name="Sexo" value="FEMENINO">
+                <label for="FEMENINO">Femenino</label>
+                <input type="radio" id="Otro-Suscriptor" name="Sexo" value="OTRO">
+                <label for="OTRO">Otro</label>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Tratamiento:
+                <input type="radio" id="EL-Suscriptor" name="Tratamiento" value="EL">
+                <label for="EL">El</label>
+                <input type="radio" id="Ella-Suscriptor" name="Tratamiento" value="ELLA">
+                <label for="ELLA">Ella</label>
+            </p>
+            
+         </form>
+        </fieldset>
+        <br>
+        <fieldset style="border: 1px solid black; height: auto;">
+            <legend>Datos Laborales</legend>
+            <form>
+                <label for="Trabajo-Suscriptor">Empresa</label>
+                <input type="text" name="" id="Trabajo-Suscriptor" min="5" max="30" style="width: 30%;">    
+                <label for="Puesto-Suscriptor">&emsp;Puesto</label>
+                <input type="text" name="" id="Puesto-Suscriptor" min="5" max="30" style="width: 30%;">    
+                <label for="Ingreso-Suscriptor">&emsp;Ingreso</label>
+                <input type="date" name="" id="Ingreso-Suscriptor" style="width: 10%;">    
+
+            </form>
+        </fieldset>
+        <br>
+        <button type="button" onclick="alert('Boton de Suscribir')">Enviar</button>
+    </fieldset>
+</div>
+<br>
+<!--Pie de Pagina------------------------------------------------------------------>
+<div class="footer">
+    <div class="pie-1">
+        <img src="./Imagenes/ubicacion.png" alt="ubicacion" style="height:1.5em;">
+    </div>
+    <div class="pie-2">
+        Avelino Diaz 2334 - CABA
+    </div>
+    <div class="pie-3">
+        <img src="./Imagenes/Telefono.png" alt="Telefono" style="height: 1.5em;">
+    </div>
+    <div class="pie-4">
+        11-5658-6067
+    </div>
+    <div class="pie-5">
+        <img src="./Imagenes/mail.jpg" alt="mail" style="height: 1.5em;">
+    </div>
+    <div class="pie-6">
+        info@DT-RRHH.com
+    </div>
+</div>
+<!------------------------------------------------------------------->
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  </script>
+
+</body>
+</html>

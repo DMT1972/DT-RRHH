@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT Servicios para RR.HH.</title>
+
+    <link rel="stylesheet" href="./CSS/Estilos.css">
+
+    <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <!--Agregar Icono-->
+    <link rel="icon" type="image/x-icon" href="./Imagenes/DT Icono.ico">
+
+    <style>
+body{
+    background-image: url("./Imagenes/Fondo\ en\ Movimiento\ 3.gif");
+    background-repeat:repeat-y;
+    background-attachment: fixed;
+    background-size: 100%;
+    font-family:'Special Elite';
+    /*width: 100%;
+    margin: 0px;*/
+}
+.dropbtn {
+  background-color: var(--colorFondo);
+  color: white;
+  padding: 0px 6px 10px 6px; /*ver si es afectado por el border*/
+  border: 0px;
+  font-size: 1em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:var(--colorFondo);
+  padding: 10px 0px 10px 15px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  /*background-color: rgba(255, 255, 255, 0.3);*/
+  /*text-decoration: underline;*/
+  padding: 0px 6px 0px 6px;
+  border-bottom: 4px solid red;
+}
+.Encabezado li{
+  padding-bottom: 4px;
+}
+.Encabezado li:hover{
+  border-bottom: 4px solid red;/*este borde es el que me hace lio*/
+  padding-bottom: 0;
+}
+.footer{
+    display: grid;
+    flex-direction: row;
+    /*border: 1px solid black;*/
+    align-items: center;   
+    width: 70%; 
+    padding-left: 30%;  
+}
+.nota{
+  width: 96%;
+  padding:2%;
+  border: 1px solid black;
+}
+/*-----------------------------------------------------------------------*/
+.open-button{
+  background-color: var(--colorFondo);
+  color: white;
+  border: 0;
+  font-size: medium;
+  margin-bottom: 0px;
+  padding-bottom: 6px;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  /*bottom: 0;*/
+  top: 120px;
+  left: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 9;
+}
+.form-container {
+  max-width: 200px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 170px;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: green;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.7;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+  opacity: 0.7;
+}
+
+.form-popup a{
+  background-color: blue;
+  opacity: 0.7;
+  font-size: small; 
+  padding: 10px; 
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover, .form-popup a:hover{
+  opacity: 1;
+  color: white;
+}
+</style>
+
+</head>
+
+<body>
+<!--Encabezado-------------------------------------------------------------->  
+<div class="Encabezado">
+<p>
+  <a href="./Index.html">
+    <img src="./Imagenes/DT sin Fondo Blanco Completo.png" alt="LogoDT" style="float:left; height: 100px;">
+  </a>
+  <nav>      
+    <ul>
+        <li>
+          <!--<a href="./Suscripcion.html">Ingresar</a>-->
+          <button class="open-button" onclick="openForm()">Ingresar</button>
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                       
+              <label for="email"></label>
+              <input type="text" placeholder="e-mail" name="email" required>
+          
+              <label for="psw"></label>
+              <input type="password" placeholder="Password" name="psw" required>
+          
+              <button type="submit" class="btn">Login</button>
+              
+              <a href="./Suscripcion.html">Suscribirse</a>
+              
+              <!--<button type="button" class="btn">Suscribir</button>-->
+              
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+          
+        </li>
+        <li><a href="./Nosotros.html">Nosotros</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding-bottom: 2px;">Servicios</button>
+          <div class="dropdown-content">
+            <a href="./Servicios.html#Gerenciamiento">Gerenciamiento del Area</a>
+            <a href="./Servicios.html#RRLL">Relaciones Laborales</a>
+            <a href="./Servicios.html#Seleccion">Reclutamiento y Seleccion</a>
+            <a href="./Servicios.html#Capacitacion">Capacitacion</a>
+            <a href="./Servicios.html#Desarrollo">Desarrollo</a>
+            <a href="./Servicios.html#Liquidacion">Liquidacion de Sueldos</a>
+            <a href="./Servicios.html#Proveedores">Proveedores Externos</a>
+            <a href="./Servicios.html#AdP">Administracion de Personal</a>
+            <a href="./Servicios.html#C&B">Compensaciones & Beneficios</a>
+            <a href="./Servicios.html#Vigilancia">Seguridad Patrimonial</a>
+            <a href="./Servicios.html#Seg&Higiene">Seguridad e Higiene</a>
+            <a href="./Servicios.html#DerechoLaboral">Derecho Laboral</a>         
+          </div>
+        </div></li>
+        <li><a href="./Links.html">Links</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding: 0px 6px 2px; color: red;"><b>Notas de Interes</b></button>
+          <div class="dropdown-content">
+            <a href="./Nota-Talento.html" style="border: 0px;">Talento y Bajo Desempeño</a>
+            <a href="./Nota-Alcoholismo.html" style="border: 0px;">Ebriedad, Alcoholismo y Contrato de Trabajo</a>
+            <a href="./Nota-Teletrabajo.html" style="border: 0px;">Teletrabajo</a>
+            <a href="./Nota-Moobing.html" style="border: 0px;">Mobbing</a>
+          </div>
+        </div></li>
+        <li><a href="./Contacto.html">Contacto</a></li>
+        <li style="border: 0;">
+          <form>
+            <input type="search" name="" id="" style="width: 100px;">
+            <input type="submit" value="Buscar">
+          </form>
+        </li>
+    </ul>
+  </nav>
+</p>
+</div>
+<!------------------------------------------------------------------------------------------>
+<div class="Notas" style="padding: 2em; line-height: 1.5em;">
+    <h2 style="padding-top: 4em;text-align: center;">
+        Retención del Talento y Gestión de personal con Bajo Desempeño
+    </h2>
+    <hr>
+    <p>La Retención del Talento y la Gestión del Personal con Bajo Desempeño son 2 de los desafíos 
+        estratégicos que enfrentan las Empresas en la actualidad.<br><br>
+        Ante la coyuntura actual de nuestro País, muchas Empresas, invisibilizan o posponen el tratamiento de estos temas, básicamente por:
+    </p>
+    <ul>
+        <li><i>Desconocimiento</i></li>
+        <li><i>Darle baja importancia</i></li>
+        <li><i>Problemas de costos</i></li>
+        <li><i>Materialización de los resultados a mediano y largo plazo</i></li>
+    </ul>
+    <b>¿A que personas nos referimos cuando hablamos de Talentos y Bajo Desempeño?</b>
+    <p><b>Talentos</b>, son Colaboradores que han tenido, al menos durante dos periodos consecutivos, 
+        Evaluaciones de Desempeño con calificaciones que superan ampliamente los requerimientos 
+        de la posición que ocupan.<br><br> 
+        Estadísticamente no deberían ser más del 10% del total de la dotación.<br><br>
+        En cambio, cuando hablamos de <b>Personal con Bajo Desempeño</b>, nos referimos exactamente 
+        a la parte opuesta de la curva de distribución, o sea, Colaboradores que al menos durante 
+        2 periodos consecutivos, hayan tenido Evaluaciones de Desempeño muy por debajo de las 
+        necesidades que requiere el puesto que ocupan.
+    </p>
+    <h3 style="text-align: center;">Gráfico Distribución Normal del Desempeño en una Compañía</h3>
+    <img src="./Imagenes/Grafico Distribucion Normal.png" style="width: 50%; padding-left: 25%;">
+    <h3 style="padding-top:0.5em;padding-bottom:0.5em; background-color: greenyellow;">Retención del Talento</h3>
+    <p>
+        <img src="./Imagenes/Talento Verde.png" alt="Talento" style="float: left; width: 25%;">
+        Cuando Colaboradores: talentosos, motivados y calificados dejan la Compañía, 
+        no solo se pierde su experiencia y conocimientos, sino que también se incurre 
+        en costos significativos de reclutamiento, capacitación y tiempo de adaptación de 
+        nuevos Colaboradores.<br><br> 
+        Además, la rotación de personal, en especial personal clave y referentes del Área, 
+        afectan negativamente la Cultura, Motivación y la Moral de la Empresa.<br><br>
+        Para retener el talento, el primer paso es DETECTARLO, la forma más eficiente es mediante 
+        la implementación de programas de Evaluación de Desempeño y Detección de Potencial.<br><br>
+        Para retener el talento, las Empresas deben adoptar un enfoque estratégico y asumir un 
+        compromiso de la Alta Gerencia a mediano y largo plazo.<br><br> 
+        El siguiente cuadro enumera los principales desafíos que debe enfrentar la Empresa y 
+        algunas de las herramientas y programas que puede utilizar o implementar una Compañía.
+    </p>
+    <div class="Tabla-1">
+        <div class="Celda1" style="background-color: rgb(0, 0, 157); color: white;"><b>Desafío</b></div>
+        <div class="Celda2" style="background-color: rgb(0, 0, 157); color: white;"><b>Herramienta / Programa</b></div>
+        <div class="Celda3">Conocer las aptitudes, necesidades y expectativas de los Colaboradores</div>
+        <div class="Celda4">-	Evaluación de Desempeño</div>
+        <div class="Celda5">Brindarles oportunidades de desarrollo y crecimiento profesional</div>
+        <div class="Celda6">- Planes de Carrera<br>- Cuadros de Reemplazo<br>- Programas de capacitación</div>
+        <div class="Celda7">Reconocer su desempeño y logros</div>
+        <div class="Celda8">-	Evaluación de Desempeño (retroalimentación y reconocimiento)</div>
+        <div class="Celda9">Proporcionar beneficios y compensaciones competitivas</div>
+        <div class="Celda10">- Análisis de Compensaciones & Beneficios</div>
+        <div class="Celda11">Ofrecer un ambiente de trabajo atractivo, que fomente la colaboración y el trabajo en equipo</div>
+        <div class="Celda12">- Planes de Capacitación para Mandos Medios<br>- Lugar de trabajo agradable, 
+            seguro, ergonómico<br>- Herramientas de trabajo adecuadas y actualizadas para su función</div>
+        <div class="Celda13">Brindar un equilibrio entre la vida laboral y personal</div>
+        <div class="Celda14">- Flex Time<br>- Home Oficce<br>- Desconexión Digital fuera de horario de trabajo</div>
+    </div>
+    <h3 style="padding-top:0.5em;padding-bottom:0.5em; background-color: red;">Gestión de Personal con Bajo Desempeño</h3>
+    <p>
+        <img src="./Imagenes/Bajo Desempeño.png" alt="Baja Desempeño" style="float:right; width: 25%;">
+        La gestión de Personal con Bajo Desempeño es otro de los desafíos estratégicos que deben enfrentar 
+        las Empresas.<br><br>
+        Los Colaboradores con bajo desempeño afectan negativamente la moral y el ambiente de trabajo de 
+        los diferentes equipos de trabajo.<br><br> 
+        Además, si no se aborda a tiempo, el bajo desempeño terminará afectando: la productividad, 
+        la calidad de los productos o servicios y en consecuencia la Marca o Reputación de la Compañía, 
+        con la posible pérdida de Clientes.<br><br>
+        Al igual que con la Retención del Talento, el primer paso para poder trabajar con el personal 
+        de Bajo Desempeño, es DETECTARLO.<br><br>
+        La principal herramienta para detectarlo es la Evaluación de Desempeño y una cultura de 
+        retroalimentación continua entre Supervisores y Supervisados.<br><br>
+        Al detectar una Persona con Bajo Desempeño, es fundamental identificar las causas del mismo, 
+        reconocer su origen y si son problemas:
+    </p>
+    <div class="Tabla-2">
+        <div class="Celda1" style="background-color: brown; color: white;"><b>Personales</b></div>
+        <div class="Celda2" style="background-color: rgb(0, 0, 157); color: white;"><b>Laborales</b></div>
+        <div class="Celda3">Conflictos Familiares</div>
+        <div class="Celda4">Conflictos / Acoso de Supervisores / Colegas - Mobbing</div>
+        <div class="Celda5">Problemas de Salud - propios o de familiares</div>
+        <div class="Celda6">Problemas con Supervisión, demasiada (micromanagement) o muy poca (laissez faire leadership)</div>
+        <div class="Celda7">Separación / Divorcio</div>
+        <div class="Celda8">Deficiencia de Infraestructura o Herramientas Laborales</div>
+        <div class="Celda9">Fallecimiento de Familiares</div>
+        <div class="Celda10">Burnout</div>
+        <div class="Celda11">Dificultades Económicas</div>
+        <div class="Celda12">Sobre Carga de Trabajo</div>
+        <div class="Celda13">Adicciones</div>
+        <div class="Celda14">Falta de conocimientos técnicos o aptitudes para el puesto</div>
+        <div class="Celda15">Otros</div>
+        <div class="Celda16">Desmotivación</div>
+        <div class="Celda17"></div>
+        <div class="Celda18">Otros</div>
+    </div>
+    <p>En todos los casos, se deberá realizar un Plan de Acción a corto plazo, el mismo debe incluir:</p>
+    <ul>
+        <li><i>Plantear Objetivos SMART</i></li>
+        <li><i>Definir Personas y Sectores que deberán participar, definiendo claramente:</i>
+            <ul>
+                <li>Acciones</li>
+                <li>Responsables</li>
+                <li>Tiempos</li>
+                <li>Recursos - Materiales y Personales</li>
+            </ul>
+        </li>     
+        <li><i>Seguimiento Personalizado, formal e informal, que proporcione una retroalimentación 
+            constructiva y específica.</i></li>
+    </ul>
+    <h3 style="padding-top:0.5em;padding-bottom:0.5em; background-color: black; color: white;">Conclusiones</h3>
+    <p>La Retención del Talento y la Gestión del Personal con Bajo Desempeño son 2 de los desafíos 
+        estratégicos que enfrentan las Empresas en la actualidad.<br><br>
+        Para poder enfrentar exitosamente estos 2 desafíos, las Empresas necesitan, en forma previa:
+    </p>
+    <ol>
+        <li><b>Convencimiento de la Dirección de la Empresa</b>
+            <ol type="a">
+                <li>Involucrándose activamente, brindando Apoyo y Tiempo</li>
+                <li>Asignando los recursos humanos</li>
+                <li>Aprobando las inversiones</li>
+            </ol>
+        </li>
+        <li><b>Implementar Políticas, Procesos y Herramientas que permitan:</b>
+            <ol type="a">
+                <li>La Detección y Gestión, tanto del Talento como del Personal con Bajo Rendimiento</li>
+                <li>Feed Back continuo</li>
+                <li>Diversidad e inclusión</li>
+            </ol>
+        </li>
+    </ol>
+    <p>Un Sistema Integral de Gestión del Desempeño debería contemplar:</p>
+    <ul>
+        <li>Definición de Puestos Estratégicos</li>
+        <li>Evaluación de Desempeño</li>
+        <li>Planes de Carrera</li>
+        <li>Cuadros de Reemplazo</li>
+        <li>Programas de Capacitación</li>
+        <li>Análisis de Compensaciones & Beneficios</li>
+        <li>Políticas de Compliance </li>
+    </ul>
+    <p style="padding: 5%; background-color: black; color: white; font-size:large;text-align: center;line-height: 2em;">
+        <b>Como podemos ver, la Retención del Talento y la Gestión de Personal con Bajo Desempeño, 
+        implica una serie de pasos, que, en un Mediano Plazo, redundará en una Empresa: 
+        más sana, productiva, atractiva para los Colaboradores y Clientes y por lo tanto una 
+        Empresa más Rentable.</b></p>
+
+
+<!--Pie de Pagina------------------------------------------------------------------>
+<div class="footer">
+    <div class="pie-1">
+        <img src="./Imagenes/ubicacion.png" alt="ubicacion" style="height:1.5em;">
+    </div>
+    <div class="pie-2">
+        Avelino Diaz 2334 - CABA
+    </div>
+    <div class="pie-3">
+        <img src="./Imagenes/Telefono.png" alt="Telefono" style="height: 1.5em;">
+    </div>
+    <div class="pie-4">
+        11-5658-6067
+    </div>
+    <div class="pie-5">
+        <img src="./Imagenes/mail.jpg" alt="mail" style="height: 1.5em;">
+    </div>
+    <div class="pie-6">
+        info@DT-RRHH.com
+    </div>
+</div>
+<!------------------------------------------------------------------->
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  </script>
+
+</body>
+</html>
