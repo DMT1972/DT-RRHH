@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT Servicios para RR.HH.</title>
+
+    <link rel="stylesheet" href="./CSS/Estilos.css">
+
+    <!--Tipografia-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <!--Agregar Icono-->
+    <link rel="icon" type="image/x-icon" href="./Imagenes/DT Icono.ico">
+
+</head>
+<body>
+
+<style>
+body{
+    background-image: url("./Imagenes/Fondo\ en\ Movimiento\ 3.gif");
+    background-repeat:repeat-y;
+    background-attachment: fixed;
+    background-size: 100%;
+    font-family:'Special Elite';
+    /*width: 100%;
+    margin: 0px;*/
+}
+.dropbtn {
+  background-color: var(--colorFondo);
+  color: white;
+  padding: 0px 6px 10px 6px; /*ver si es afectado por el border*/
+  border: 0px;
+  font-size: 1em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:var(--colorFondo);
+  padding: 10px 0px 10px 15px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  /*background-color: rgba(255, 255, 255, 0.3);*/
+  /*text-decoration: underline;*/
+  padding: 0px 6px 0px 6px;
+  border-bottom: 4px solid red;
+}
+.Encabezado li{
+  padding-bottom: 4px;
+}
+.Encabezado li:hover{
+  border-bottom: 4px solid red;/*este borde es el que me hace lio*/
+  padding-bottom: 0;
+}
+.footer{
+    display: grid;
+    flex-direction: row;
+    /*border: 1px solid black;*/
+    align-items: center;   
+    width: 70%; 
+    padding-left: 30%;  
+}
+.nota{
+  width: 96%;
+  padding:2%;
+  border: 1px solid black;
+}
+/*-----------------------------------------------------------------------*/
+.open-button{
+  background-color: var(--colorFondo);
+  color: white;
+  border: 0;
+  font-size: medium;
+  margin-bottom: 0px;
+  padding-bottom: 6px;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  /*bottom: 0;*/
+  top: 120px;
+  left: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 9;
+}
+.form-container {
+  max-width: 200px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 170px;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: green;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.7;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+  opacity: 0.7;
+}
+
+.form-popup a{
+  background-color: blue;
+  opacity: 0.7;
+  font-size: small; 
+  padding: 10px; 
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover, .form-popup a:hover{
+  opacity: 1;
+  color: white;
+}
+</style>
+
+</head>
+
+<body>
+<!--Encabezado-------------------------------------------------------------->  
+<div class="Encabezado">
+<p>
+  <a href="./Index.html">
+    <img src="./Imagenes/DT sin Fondo Blanco Completo.png" alt="LogoDT" style="float:left; height: 100px;">
+  </a>
+  <nav>      
+    <ul>
+        <li>
+          <!--<a href="./Suscripcion.html">Ingresar</a>-->
+          <button class="open-button" onclick="openForm()">Ingresar</button>
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                       
+              <label for="email"></label>
+              <input type="text" placeholder="e-mail" name="email" required>
+          
+              <label for="psw"></label>
+              <input type="password" placeholder="Password" name="psw" required>
+          
+              <button type="submit" class="btn">Login</button>
+              
+              <a href="./Suscripcion.html">Suscribirse</a>
+              
+              <!--<button type="button" class="btn">Suscribir</button>-->
+              
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+          
+        </li>
+        <li><a href="./Nosotros.html">Nosotros</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding-bottom: 2px;">Servicios</button>
+          <div class="dropdown-content">
+            <a href="./Servicios.html#Gerenciamiento">Gerenciamiento del Area</a>
+            <a href="./Servicios.html#RRLL">Relaciones Laborales</a>
+            <a href="./Servicios.html#Seleccion">Reclutamiento y Seleccion</a>
+            <a href="./Servicios.html#Capacitacion">Capacitacion</a>
+            <a href="./Servicios.html#Desarrollo">Desarrollo</a>
+            <a href="./Servicios.html#Liquidacion">Liquidacion de Sueldos</a>
+            <a href="./Servicios.html#Proveedores">Proveedores Externos</a>
+            <a href="./Servicios.html#AdP">Administracion de Personal</a>
+            <a href="./Servicios.html#C&B">Compensaciones & Beneficios</a>
+            <a href="./Servicios.html#Vigilancia">Seguridad Patrimonial</a>
+            <a href="./Servicios.html#Seg&Higiene">Seguridad e Higiene</a>
+            <a href="./Servicios.html#DerechoLaboral">Derecho Laboral</a>         
+          </div>
+        </div></li>
+        <li><a href="./Links.html">Links</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn" style="padding: 0px 6px 2px;">Notas de Interes</button>
+          <div class="dropdown-content">
+            <a href="./Nota-Talento.html" style="border: 0px;">Talento y Bajo Desempeño</a>
+            <a href="./Nota-Alcoholismo.html" style="border: 0px;">Ebriedad, Alcoholismo y Contrato de Trabajo</a>
+            <a href="./Nota-Teletrabajo.html" style="border: 0px;">Teletrabajo</a>
+            <a href="./Nota-Moobing.html" style="border: 0px;">Mobbing</a>
+          </div>
+        </div></li>
+        <li><a href="./Contacto.html">Contacto</a></li>
+        <li style="border: 0;">
+          <form>
+            <input type="search" name="" id="" style="width: 100px;">
+            <input type="submit" value="Buscar">
+          </form>
+        </li>
+    </ul>
+  </nav>
+</p>
+</div>
+<!------------------------------------------------------------------------------------------>
+<!--Cuerpo Pagina Principal-->
+<video style="width: 100%; margin-top: 120px;" autoplay muted loop>
+  <source src="./Imagenes/Presentación DT para Curso Programacion.mp4" type="video/mp4">
+</video>
+<hr>
+<!--Nota------------------------------------------------------------------->
+<div class="nota">
+  <img src="./Imagenes/RetencionTalento.png" alt="Talento" 
+      style="float:inline-end; height:100px;vertical-align: middle;"><b style="font-size: 4vh;padding: 50px;">Retencion del Talento y Manejo Personal con Bajo Desempeño</b>
+  </img>  
+      <p>
+          Retención del Talento y la Gestión del Personal con Bajo Desempeño son 2 de los desafíos estratégicos que enfrentan las Empresas en la actualidad.
+          Ante la coyuntura actual de nuestro País, muchas Empresas, invisibilizan o posponen el tratamiento de estos temas, básicamente por:
+      </p>
+      <ul>
+          <li>Desconocimiento</li>
+          <li>Darle baja importancia</li>
+          <li>Problemas de costos</li>
+          <li>Materialización de los resultados a mediano y largo plazo</li>
+      </ul>
+      <p>
+        ¿A que personas nos referimos cuando hablamos de Talentos y Bajo Desempeño?<br>
+        Talentos, son Colaboradores que han tenido, al menos durante dos periodos consecutivos, Evaluaciones de Desempeño con calificaciones que superan ampliamente los requerimientos de la posición que ocupan. 
+        Estadísticamente no deberían ser más del 10% del total de la dotación.<br>
+        En cambio, cuando hablamos de Personal con Bajo Desempeño, nos referimos exactamente a la parte opuesta de la curva de distribución, o sea, Colaboradores que al menos durante 2 periodos consecutivos, hayan tenido Evaluaciones de Desempeño muy por debajo de las necesidades que requiere el puesto que ocupan.
+      </p>
+      <h3 style="text-align: center;">Gráfico Distribución Normal del Desempeño en una Compañía</h3>
+  
+      <img src="./Imagenes/RetencionTalento.png" alt="Talento" 
+      style="width: 50vw; padding-left: 25vw;">
+
+      <h3>Retención del Talento</h3>
+
+      <p>
+          Cuando Colaboradores: talentosos, motivados y calificados dejan la Compañía, no solo se pierde su experiencia y conocimientos, sino que también se incurre en costos significativos de reclutamiento, capacitación y tiempo de adaptación de nuevos Colaboradores. 
+          Además, la rotación de personal, en especial personal clave y referentes del Área, afectan negativamente la Cultura, Motivación y la Moral de la Empresa.<br>
+          Para retener el talento, el primer paso es DETECTARLO, las forma más eficiente es mediante la implementación de programas de Evaluación de Desempeño y Detección de Potencial.<br>
+          Para retener el talento, las Empresas deben adoptar un enfoque estratégico y asumir un compromiso de la Alta Gerencia a mediano y largo plazo.<br>
+          El siguiente cuadro enumera los principales desafíos que debe enfrentar la Empresa y algunas de las herramientas y programas que puede utilizar o implementar una Compañía.<br>
+      </p>
+      <a href="./Portada-Notas-Interes.html" style="color: black;">Leer</a>
+  </div>
+  <br>
+<!--------------------------------------------------------------------------------->
+
+<!--Pie de Pagina------------------------------------------------------------------>
+  <div class="footer">
+      <div class="pie-1">
+          <img src="./Imagenes/ubicacion.png" alt="ubicacion" style="height:1.5em;">
+      </div>
+      <div class="pie-2">
+          Avelino Diaz 2334 - CABA
+      </div>
+      <div class="pie-3">
+          <img src="./Imagenes/Telefono.png" alt="Telefono" style="height: 1.5em;">
+      </div>
+      <div class="pie-4">
+          11-5658-6067
+      </div>
+      <div class="pie-5">
+          <img src="./Imagenes/mail.jpg" alt="mail" style="height: 1.5em;">
+      </div>
+      <div class="pie-6">
+          info@DT-RRHH.com
+      </div>
+  </div>
+<!------------------------------------------------------------------->
+
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  </script>
+  
+
+</body>
+</html>
