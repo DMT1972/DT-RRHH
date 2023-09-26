@@ -30,10 +30,10 @@ body{
 }
 .dropbtn {
   background-color: var(--colorFondo);
-  color: white;
+  color:white;
   padding: 0px 6px 10px 6px; /*ver si es afectado por el border*/
   border: 0px;
-  font-size: 1em;
+  font-size: 1.5vw;
 }
 
 .dropdown {
@@ -84,6 +84,7 @@ body{
     padding-left: 30%;  
 }
 .nota{
+  font-size: 1.5vw;
   width: 96%;
   padding:2%;
   border: 1px solid black;
@@ -93,7 +94,7 @@ body{
   background-color: var(--colorFondo);
   color: white;
   border: 0;
-  font-size: medium;
+  font-size: 1.5vw;
   margin-bottom: 0px;
   padding-bottom: 6px;
 }
@@ -160,6 +161,22 @@ body{
   opacity: 1;
   color: white;
 }
+.cuerpo-video{
+  margin-top: 10vw;
+}
+@media screen and (max-width: 830px) {
+  nav ul{
+    left: 150px;
+    font-size: small;
+  }
+  .open-button, .dropbtn{
+    font-size: small;
+  }
+  .cuerpo-video {
+    margin-top: 85px;
+  }
+}
+
 </style>
 
 </head>
@@ -169,7 +186,7 @@ body{
 <div class="Encabezado">
 <p>
   <a href="./Index.html">
-    <img src="./Imagenes/DT sin Fondo Blanco Completo.png" alt="LogoDT" style="float:left; height: 100px;">
+    <img src="./Imagenes/DT sin Fondo Blanco Completo.png" alt="LogoDT" style="float:left; height: 7vw; min-height: 60px;">
   </a>
   <nav>      
     <ul>
@@ -237,14 +254,17 @@ body{
 </div>
 <!------------------------------------------------------------------------------------------>
 <!--Cuerpo Pagina Principal-->
-<video style="width: 100%; margin-top: 120px;" autoplay muted loop>
-  <source src="./Imagenes/Presentación DT para Curso Programacion.mp4" type="video/mp4">
-</video>
+
+<div class="cuerpo-video">
+    <video style="width: 100%;" autoplay muted loop>
+      <source src="./Imagenes/Presentación DT para Curso Programacion.mp4" type="video/mp4">
+    </video>
+</div>
 <hr>
 <!--Nota------------------------------------------------------------------->
 <div class="nota">
   <img src="./Imagenes/RetencionTalento.png" alt="Talento" 
-      style="float:inline-end; height:100px;vertical-align: middle;"><b style="font-size: 4vh;padding: 50px;">Retencion del Talento y Manejo Personal con Bajo Desempeño</b>
+      style="float:inline-end; height:100px;vertical-align: middle;"><b style="font-size: 2vw;padding: 50px;">Retencion del Talento y Manejo Personal con Bajo Desempeño</b>
   </img>  
       <p>
           Retención del Talento y la Gestión del Personal con Bajo Desempeño son 2 de los desafíos estratégicos que enfrentan las Empresas en la actualidad.
