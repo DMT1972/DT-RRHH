@@ -53,6 +53,7 @@ legend{
     margin-top: 130px;
     display: grid;
     padding-left: 10%;
+    height: 450px;
     /*grid-template-columns: repeat(4,1fr);*/
     grid-template-columns: 30% 30% 30%;
     grid-template-rows: 73vh 73vh 73vh;
