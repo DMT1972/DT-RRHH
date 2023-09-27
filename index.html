@@ -164,6 +164,8 @@ body{
 .cuerpo-video{
   margin-top: 10vw;
 }
+
+/*---Responsive------------------------------------------------------*/
 @media screen and (max-width: 830px) {
   nav ul{
     left: 150px;
@@ -173,10 +175,16 @@ body{
     font-size: small;
   }
   .cuerpo-video {
-    margin-top: 85px;
+    margin-top: 105px;
+  }
+  .ImagenChica img{
+    display: none;
+  }
+  .nota{
+    font-size: small;
   }
 }
-
+/*--------------------------------------------------------------------*/
 </style>
 
 </head>
@@ -263,9 +271,12 @@ body{
 <hr>
 <!--Nota------------------------------------------------------------------->
 <div class="nota">
-  <img src="./Imagenes/RetencionTalento.png" alt="Talento" 
-      style="float:inline-end; height:100px;vertical-align: middle;"><b style="font-size: 2vw;padding: 50px;">Retencion del Talento y Manejo Personal con Bajo Desempeño</b>
-  </img>  
+  
+    <div class="ImagenChica">   
+          <h3 style="text-align: center; background-color: greenyellow; padding: 1vw 0px 1vw 0px;"><b >Retencion del Talento
+             y Manejo Personal con Bajo Desempeño</b></h3>
+    </div>
+    
       <p>
           Retención del Talento y la Gestión del Personal con Bajo Desempeño son 2 de los desafíos estratégicos que enfrentan las Empresas en la actualidad.
           Ante la coyuntura actual de nuestro País, muchas Empresas, invisibilizan o posponen el tratamiento de estos temas, básicamente por:
@@ -285,7 +296,7 @@ body{
       <h3 style="text-align: center;">Gráfico Distribución Normal del Desempeño en una Compañía</h3>
   
       <img src="./Imagenes/RetencionTalento.png" alt="Talento" 
-      style="width: 50vw; padding-left: 25vw;">
+          style="width: 50vw; padding-left: 25vw;">
 
       <h3>Retención del Talento</h3>
 
